@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+service CountSignals {
+  rpc Count (ListOfSignals) returns (DictOfSignals);
+}
+
+service FireAlarm {
+  rpc CheckTemperature (TemperatureRequest) returns (StatusResponse);
+}
+
+message TemperatureRequest {
+  int32 temperature = 1;
+}
+
+message StatusResponse {
+  string status = 1;
+}
+
+message ListOfSignals {
+  repeated string signals = 1;
+}
+
+message DictOfSignals {
+  map <string, int32> count = 1;
+}
